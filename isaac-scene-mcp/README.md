@@ -32,11 +32,22 @@ The first command creates a `.venv` folder. The second installs the library into
 
 ## 3. Connect Cursor
 
-Open Settings, then Tools and MCP, and click Add Custom MCP. That opens `mcp.json`. Add an `isaac-scene` server using `mcp.example.json` as the pattern. In `command`, set the path to `.venv\Scripts\python.exe` inside the downloaded folder. In `args`, set the path to `server.py` in the same folder. In JSON, write each backslash twice.
+Open Settings → Tools & MCP and click Add Custom MCP. A text file named `mcp.json` will open. Paste the text below into it. The word `command` in that text is the name of a line. That line holds the path to `python.exe`, which sits inside the downloaded folder, in `.venv\Scripts`. The word `args` is the name of the next line. That line holds the path to `server.py` in the same folder. Write each backslash twice. That is how this file is formatted:
 
-If `mcp.json` already has other servers, add the `isaac-scene` block inside `mcpServers`, separated by a comma, and leave the rest in place.
+```json
+{
+  "mcpServers": {
+    "isaac-scene": {
+      "command": "C:\\Users\\NAME\\Desktop\\isaac-scene-mcp\\.venv\\Scripts\\python.exe",
+      "args": [
+        "C:\\Users\\NAME\\Desktop\\isaac-scene-mcp\\server.py"
+      ]
+    }
+  }
+}
+```
 
-Save the file. Press Ctrl+Shift+P, type Developer: Reload Window, and run that command. Open Settings, then Tools and MCP again, and turn on `isaac-scene`. The dot next to the name should be green.
+Replace `NAME` with your Windows user folder name. If you did not put the bridge folder on the desktop, correct the path in both lines, `command` and `args`. If `mcp.json` already contains something, add the `isaac-scene` block inside `mcpServers`, with a comma, and leave the existing lines in place. Save the file. Press Ctrl+Shift+P, type Developer: Reload Window, and run that command. Cursor will reload. Open Settings → Tools & MCP again and turn on the `isaac-scene` switch. A green dot should appear next to the name. A red dot means the path in the `command` line or the `args` line is wrong, or the commands in step 2 have not been run yet.
 
 ## 4. Check
 
